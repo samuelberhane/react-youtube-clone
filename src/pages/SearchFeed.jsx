@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
 import { Videos } from "../components";
 import { fetchData } from "../utils/videosData";
 import { useParams } from "react-router-dom";
@@ -16,20 +15,15 @@ const SearchFeed = () => {
   }, [searchQuery]);
 
   return (
-    <Box
-      py={2}
-      px={5}
-      sx={{ overflowY: "auto", flex: 2, height: "92vh" }}
-      textAlign="center"
-    >
-      <Typography variant="h5" mb={2} fontWeight="bold">
+    <div className="py-2 px-4 overflow-y-auto flex-grow h-[92vh] text-center">
+      <p className="font-bold mb-2">
         Search result for {searchQuery}
-        <span style={{ color: "rgb(245, 70, 172)" }}> videos</span>
-      </Typography>
+        <span className="text-[#a342a3]"> videos</span>
+      </p>
 
       {/* video content */}
       <Videos videos={videos} />
-    </Box>
+    </div>
   );
 };
 
