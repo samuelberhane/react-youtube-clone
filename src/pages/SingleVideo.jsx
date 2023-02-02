@@ -3,7 +3,7 @@ import { Stack, Box, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import { fetchSingleVideo } from "../utils/singleVideoData";
 import { useParams, Link } from "react-router-dom";
-import { Videos } from "./";
+import { Videos } from "../components";
 import { fetchRelatedData } from "../utils/relatedVideos";
 import { CheckCircle } from "@mui/icons-material";
 

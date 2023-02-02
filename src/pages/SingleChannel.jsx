@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchChannelData } from "../utils/channelData";
 import { fetchChannelVideos } from "../utils/channelVideos";
 import { useParams } from "react-router-dom";
-import { ChannelCard, VideoCard } from "./";
+import { ChannelCard, VideoCard } from "../components";
 import { Stack, Box } from "@mui/material";
 
 const SingleChannel = () => {
