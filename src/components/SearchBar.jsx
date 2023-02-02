@@ -1,8 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Paper, IconButton } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { BiSearchAlt } from "react-icons/bi";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,16 +13,7 @@ const SearchBar = () => {
     setSearchQuery("");
   };
   return (
-    <Paper
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        mr: { sm: 5 },
-        boxShadow: "1px 1px 2px",
-        borderRadius: "10px",
-        px: 2,
-      }}
-    >
+    <form className="sm:mr-4 shadow-md rounded-lg px-2" onSubmit={handleSubmit}>
       <input
         className="search-bar"
         type="text"
@@ -34,10 +23,10 @@ const SearchBar = () => {
           setSearchQuery(e.target.value);
         }}
       />
-      <IconButton type="submit" sx={{ color: "#c22113" }}>
-        <Search />
-      </IconButton>
-    </Paper>
+      <button type="submit" className="text-[#c22113]">
+        <BiSearchAlt />
+      </button>
+    </form>
   );
 };
 
