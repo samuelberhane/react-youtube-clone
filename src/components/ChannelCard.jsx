@@ -1,56 +1,27 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { demoThumbnailUrl, demoChannelTitle } from "../utils/variables";
 
 const ChannelCard = ({ channel }) => {
   const { snippet, statistics } = channel;
   return (
     <div className="channel-card">
-      <Card
-        sx={{
-          textAlign: "center",
-          width: { xs: "200px", sm: "240px", md: "280px" },
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <CardMedia
-          image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
-          alt={snippet?.title || demoChannelTitle}
-          sx={{ height: 120, width: "100%" }}
+      <div className="text-center w-[200px] sm:w-[240px] md:w-[280px] flex flex-col items-center justify-center">
+        <img
+          src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
+          alt="videoImg"
+          className="w-full h-[120px]"
         />
-        <CardContent sx={{ height: 90, px: "10px" }}>
-          <Typography variant="subtitle1" fontWeight="Bold">
+        <div className="h-[90px] px-2">
+          <h1 className="text-xl font-bold">
             {snippet?.title.slice(0, 25) || demoChannelTitle.slice(0, 25)}
-          </Typography>
-          <Typography
-            variant="subtitle3"
-            color="grey"
-            display="block"
-            fontWeight="Bold"
-          >
-            Videos: {statistics?.videoCount || 200}
-          </Typography>
-          <Typography
-            variant="subtitle3"
-            color="grey"
-            display="block"
-            fontWeight="Bold"
-          >
-            Views: {statistics?.viewCount || 10000}
-          </Typography>
-          <Typography
-            variant="subtitle3"
-            color="grey"
-            display="block"
-            fontWeight="Bold"
-          >
+          </h1>
+          <h3 className="cardDesc">Videos: {statistics?.videoCount || 200}</h3>
+          <h3 className="cardDesc">Views: {statistics?.viewCount || 10000}</h3>
+          <h3 className="cardDesc">
             Subscribers: {statistics?.subscriberCount || 150000}
-          </Typography>
-        </CardContent>
-      </Card>
+          </h3>
+        </div>
+      </div>
     </div>
   );
 };

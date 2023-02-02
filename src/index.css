@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .cardDesc {
+    @apply text-lg font-bold block text-gray-500;
+  }
+}
+
 html,
 body {
   margin: 0;
