@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Box, Typography } from "@mui/material";
 import { SideBar, Videos } from "../components";
 import { fetchData } from "../utils/videosData";
 
