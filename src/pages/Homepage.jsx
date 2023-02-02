@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SideBar, Videos } from "../components";
+import { SideBar, Videos, Navbar } from "../components";
 import { fetchData } from "../utils/videosData";
 
 const Homepage = () => {
@@ -15,6 +15,9 @@ const Homepage = () => {
 
   return (
     <main>
+      {/* Navbar */}
+      <Navbar />
+
       {/* sidebar */}
       <SideBar
         currentCategory={currentCategory}

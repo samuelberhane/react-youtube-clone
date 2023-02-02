@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { logo } from "../utils/variables";
-import { useNavigate } from "react-router-dom";
-import { BiSearchAlt } from "react-icons/bi";
+import { useNavigate, Link } from "react-router-dom";
+import { BiSearchAlt, BiLogInCircle } from "react-icons/bi";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,27 +23,31 @@ const Navbar = () => {
             className="h-[60px] w-[100px] sm:w-[120px] rounded"
           />
         </Link>
-
-        <form
-          className="md:w-[300px] lg:w-[430px] relative"
-          onSubmit={handleSubmit}
-        >
-          <input
-            className="border-none outline-none w-full h-full rounded-xl py-2 px-4 pr-10 bg-gray-200"
-            type="text"
-            placeholder="Search Videos"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-            }}
-          />
-          <button
-            type="submit"
-            className="text-[#c22113] absolute top-2 right-2 text-xl"
+        <div className="flex items-center gap-2">
+          <form
+            className="md:w-[300px] lg:w-[430px] relative"
+            onSubmit={handleSubmit}
           >
-            <BiSearchAlt />
-          </button>
-        </form>
+            <input
+              className="border-none outline-none w-full h-full rounded-xl py-2 px-4 pr-10 bg-gray-200"
+              type="text"
+              placeholder="Search Videos"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              className="text-[#c22113] absolute top-2 right-2 text-xl"
+            >
+              <BiSearchAlt />
+            </button>
+          </form>
+          <Link to="/auth/login">
+            <BiLogInCircle className="bg-[#c22113] text-white rounded-full text-4xl p-2" />
+          </Link>
+        </div>
       </div>
     </div>
   );
