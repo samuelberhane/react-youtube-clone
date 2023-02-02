@@ -30,10 +30,13 @@ const Navbar = () => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         setUser(user);
+      } else {
+        setUser(null);
       }
     });
-  }, []);
+  }, [user]);
 
+  console.log(user);
   return (
     <div className=" fixed top-0 left-0 w-full h-[70px] shadow-md z-[100] bg-white">
       <div className="flex items-center px-1 py-2 sm:px-8 justify-between h-full">
@@ -75,7 +78,7 @@ const Navbar = () => {
               <img
                 src={user?.photoURL}
                 alt="userProfile"
-                className="w-9 h-9 rounded-full"
+                className="w-9 h-9 rounded-full cursor-pointer"
                 onClick={() => signOut(auth)}
               />
             )}

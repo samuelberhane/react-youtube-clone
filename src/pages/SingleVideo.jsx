@@ -43,7 +43,7 @@ const SingleVideo = () => {
   // handle comment submit
   const handleComment = (e) => {
     e.preventDefault();
-    setText(null);
+    setText("");
   };
 
   // return loading while fetch data
@@ -121,7 +121,7 @@ const SingleVideo = () => {
                   <div className="flex justify-end mt-1">
                     <button
                       className="bg-blue-800 text-white font-semibold px-3 py-1 rounded-2xl"
-                      type="submit"
+                      onClick={handleComment}
                       disabled={text.length === 0 ? true : false}
                     >
                       Comment
