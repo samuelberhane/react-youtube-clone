@@ -22,7 +22,7 @@ const SearchFeed = () => {
       </p>
 
       {/* video content */}
-      <Videos videos={videos} />
+      <Videos videos={videos} direction={false} />
     </div>
   );
 };

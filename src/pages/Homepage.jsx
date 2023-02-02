@@ -26,7 +26,7 @@ const Homepage = () => {
         <p className="font-bold mb-4 text-2xl">
           {currentCategory} <span className="text-[#e13e51]">Videos</span>
         </p>
-        <Videos videos={videos} />
+        <Videos videos={videos} direction={false} />
       </div>
     </main>
   );

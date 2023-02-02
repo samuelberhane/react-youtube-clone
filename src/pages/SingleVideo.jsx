@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { Videos } from "../components";
 import { fetchRelatedData } from "../utils/relatedVideos";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { demoChannelTitle, demoChannelUrl } from "../utils/variables";
 
 const SingleVideo = () => {
   const { id } = useParams();
@@ -39,8 +40,8 @@ const SingleVideo = () => {
   } = videoDetails;
 
   return (
-    <section className="min-h-[95vh]">
-      <div className="flex flex-col md:flex-row mt-5 mx-5">
+    <section className="mt-[90px]">
+      <div className="flex flex-col sm:flex-row mt-5 mx-5">
         {/* playing video description */}
         <div className="flex-grow">
           <div className="w-full mb-3">
@@ -59,10 +60,13 @@ const SingleVideo = () => {
           {/* details about playing video */}
           <div className="mt-1 mb-5 flex items-center justify-between">
             {/* channel name */}
-            <Link to={`/channel/${channelId}`}>
-              <h1 className="font-semibold text-lg">
-                {channelTitle} <BsFillPatchCheckFill className="text-sm ml-1" />
-              </h1>
+
+            <Link to={channelId ? `/channel/${channelId}` : demoChannelUrl}>
+              <p className="font-semibold text-sm text-gray-500 flex items-center">
+                {" "}
+                {channelTitle || demoChannelTitle}{" "}
+                <BsFillPatchCheckFill className="text-sm pl-1" />
+              </p>
             </Link>
 
             {/*  video statistics*/}
@@ -79,7 +83,7 @@ const SingleVideo = () => {
 
         {/* related videos */}
         <div className="mx-3">
-          <Videos videos={videos} className="flex flex-col" />
+          <Videos videos={videos} direction={true} />
         </div>
       </div>
     </section>

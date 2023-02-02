@@ -8,25 +8,26 @@ import {
   demoVideoUrl,
   demoChannelTitle,
   demoVideoTitle,
+  demoThumbnailUrl,
 } from "../utils/variables";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, direction }) => {
   const { id, snippet } = video;
   const { videoId } = id;
   return (
     <div className="flex justify-center mb-4">
-      <div className="w-[90%] sm:w-[260px] md:w-[280px] shadow-sm overflow-hidden hover:bg-[#fefafd] hover:shadow-md">
+      <div className="w-[90%] sm:w-[260px] md:w-[280px] shadow-sm overflow-hidden hover:bg-[#fefafd] hover:shadow-md bg-white">
         {/* video image */}
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <img
-            src={snippet?.thumbnails?.high?.url}
+            src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
             alt={snippet?.title}
-            className="h-[170px] w-full hover:scale-105"
+            className="h-[170px] w-full hover:scale-105 rounded-md"
           />
         </Link>
 
         {/* video description */}
-        <div className="h-[110px] px-2 mt-1">
+        <div className={`${direction ? "h-[90px]" : "h-[100px]"} px-2 mt-1`}>
           <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <p className="font-medium text-[16px] text-left">
               {snippet?.title
