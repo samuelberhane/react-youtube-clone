@@ -2,127 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  ::-webkit-scrollbar {
+    @apply w-1 h-1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#343534] rounded-md;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+}
+
 @layer components {
   .cardDesc {
     @apply text-lg font-bold block text-gray-500;
   }
-}
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(114, 113, 113);
-  border-radius: 10px;
-  height: 200px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-.category-btn:hover {
-  background-color: rgb(245, 70, 172) !important;
-  color: white !important;
-}
-
-.category-btn:hover span {
-  color: #000;
-}
-
-.react-player {
-  height: 72vh !important;
-  width: 100% !important;
-}
-
-.search-bar {
-  border: none;
-  outline: none;
-  width: 350px;
-}
-
-.category-btn {
-  font-weight: bold !important;
-  text-transform: capitalize;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  cursor: pointer;
-  background: transparent;
-  outline: none;
-  border: none;
-
-  padding: 7px 16px;
-  margin: 9px 0px;
-  border-radius: 15px;
-  transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 900px) {
-  .category-btn {
-    margin: 10px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .copyright {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .scroll-horizontal {
-    overflow: auto !important;
+  .categoryBtn {
+    @apply hover:bg-[#23a234] hover:text-white font-bold uppercase
+  flex items-center justify-start cursor-pointer bg-transparent outline-none border-none
+  py-1 px-3 mt-2 rounded-xl transition-all duration-300 ease-in-out m-2 md:m-0;
   }
 
   .react-player {
-    height: 45vh !important;
-  }
-  .search-bar {
-    width: 150px;
+    @apply sm:h-[45vh];
   }
 }
 
-.videos-card {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.channel-card {
-  position: absolute;
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: -1;
-}
-
-@media screen and (max-width: 800px) {
-  .videos-card {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .videos-card {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-  }
+/* react player */
+.react-player {
+  height: 72vh !important;
+  width: 100% !important;
 }

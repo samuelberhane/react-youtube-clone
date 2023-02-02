@@ -10,10 +10,10 @@ const SideBar = ({ currentCategory, setCurrentCategory }) => {
           <button
             onClick={() => setCurrentCategory(name)}
             key={index}
-            className={`category-btn `}
+            className="categoryBtn"
           >
             <span
-              className={`mt-2 ${
+              className={`mt-2 hover:text-black ${
                 name === currentCategory
                   ? "text-black"
                   : "text-[rgb(45, 70, 92)]"
@@ -21,7 +21,7 @@ const SideBar = ({ currentCategory, setCurrentCategory }) => {
             >
               {icon}
             </span>
-            <span>{name}</span>
+            <span className="hover:text-black">{name}</span>
           </button>
         );
       })}

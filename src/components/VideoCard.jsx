@@ -14,7 +14,7 @@ const VideoCard = ({ video }) => {
   const { id, snippet } = video;
   const { videoId } = id;
   return (
-    <div className="w-[90%] sm:w-[260px] md:w-[280px]">
+    <div className="w-[90%] sm:w-[260px] md:w-[280px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {/* video image */}
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <img

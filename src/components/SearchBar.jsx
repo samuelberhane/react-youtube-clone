@@ -15,7 +15,7 @@ const SearchBar = () => {
   return (
     <form className="sm:mr-4 shadow-md rounded-lg px-2" onSubmit={handleSubmit}>
       <input
-        className="search-bar"
+        className="border-none outline-none w-[350px]"
         type="text"
         placeholder="Search..."
         value={searchQuery}
