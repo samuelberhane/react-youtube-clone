@@ -14,32 +14,23 @@ const Homepage = () => {
   }, [currentCategory]);
 
   return (
-    <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
+    <main className="flex flex-col md:flex-row">
       {/* sidebar */}
-      <Box
-        sx={{
-          borderRight: "2px solid rgba(0,0,0,0.4)",
-          height: { sx: "auto", md: "92vh" },
-          px: { sx: 0, md: 2 },
-        }}
-      >
+      <div className="border-r-2 border-[rgba(0,0,0,0.4)] h-auto md:h-[92vh] md:px-2">
         <SideBar
           currentCategory={currentCategory}
           setCurrentCategory={setCurrentCategory}
         />
-      </Box>
-      {/* sidebar */}
+      </div>
 
       {/* videos content */}
-      <Box py={2} px={5} sx={{ overflowY: "auto", flex: 2, height: "92vh" }}>
-        <Typography variant="h4" mb={2} fontWeight="bold">
-          {currentCategory}{" "}
-          <span style={{ color: "rgb(245, 70, 172)" }}>Videos</span>
-        </Typography>
+      <div className="py-2 px-5 overflow-y-auto flex-2 h-[92vh]">
+        <p className="font-bold mb-2 ">
+          {currentCategory} <span className="text-[#a342a3]">Videos</span>
+        </p>
         <Videos videos={videos} />
-      </Box>
-      {/* videos content */}
-    </Stack>
+      </div>
+    </main>
   );
 };
 
