@@ -28,7 +28,7 @@ const VideoCard = ({ video }) => {
         {/* video description */}
         <div className="h-[110px] px-2 mt-1">
           <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-            <p className="font-semibold text-lg">
+            <p className="font-medium text-[16px] text-left">
               {snippet?.title
                 ? snippet?.title?.length > 24
                   ? snippet?.title?.slice(0, 20) + "..."
@@ -44,7 +44,7 @@ const VideoCard = ({ video }) => {
                 : demoChannelUrl
             }
           >
-            <p className="font-bold text-sm text-gray-500 flex items-center">
+            <p className="font-semibold text-sm text-gray-500 flex items-center">
               {" "}
               {snippet?.channelTitle || demoChannelTitle}{" "}
               <BsFillPatchCheckFill className="text-sm pl-1" />

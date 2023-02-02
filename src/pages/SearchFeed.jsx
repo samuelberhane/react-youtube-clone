@@ -15,10 +15,10 @@ const SearchFeed = () => {
   }, [searchQuery]);
 
   return (
-    <div className="py-2 px-4 overflow-y-auto flex-grow h-[92vh] text-center">
-      <p className="font-bold mb-2">
-        Search result for {searchQuery}
-        <span className="text-[#a342a3]"> videos</span>
+    <div className="py-2 px-4 overflow-y-auto flex-grow mt-[70px] text-center">
+      <p className="font-bold mb-4 mt-2 text-lg md:text-2xl">
+        Search result for
+        <span className="text-[#e13e51]"> {searchQuery} videos</span>
       </p>
 
       {/* video content */}
