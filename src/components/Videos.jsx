@@ -1,6 +1,5 @@
 import React from "react";
 import { VideoCard } from "./";
-import { Box } from "@mui/material";
 
 const Videos = ({ videos, direction }) => {
   if (!videos?.length)
@@ -10,26 +9,14 @@ const Videos = ({ videos, direction }) => {
       </h1>
     );
   return (
-    <Box
-      sx={{
-        flexDirection: {
-          md: `${direction || "row"}`,
-          sx: "row",
-        },
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "30px",
-        flexWrap: "wrap",
-        px: "10px",
-      }}
+    <div
+      className={`flex w-full items-center justify-center gap-7 flex-wrap  px-2`}
     >
       {/* map all videos data */}
       {videos.map((item, index) => {
         return <VideoCard video={item} key={index} />;
       })}
-    </Box>
+    </div>
   );
 };
 
