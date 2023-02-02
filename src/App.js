@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import {} from "./components";
+import { Navbar } from "./components";
 import { Homepage, SearchFeed, SingleChannel, SingleVideo } from "./pages";
 
 const App = () => {

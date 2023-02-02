@@ -1,8 +1,4 @@
 export { default as Navbar } from "./Navbar";
-export { default as Homepage } from "../pages/Homepage";
-export { default as SingleVideo } from "../pages/SingleVideo";
-export { default as SingleChannel } from "../pages/SingleChannel";
-export { default as SearchFeed } from "../pages/SearchFeed";
 export { default as SearchBar } from "./SearchBar";
 export { default as SideBar } from "./SideBar";
 export { default as Videos } from "./Videos";
