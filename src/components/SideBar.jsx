@@ -3,7 +3,7 @@ import { categories } from "../utils/variables";
 
 const SideBar = ({ currentCategory, setCurrentCategory }) => {
   return (
-    <div className="flex overflow-auto h-auto md:h-[95%] md:flex-col">
+    <div className="absolute top-[70px] left-0 flex overflow-auto h-auto md:h-[calc(100vh-70px)] md:pr-4 md:pl-5 pt-4 md:flex-col md:gap-2 border-r-2 border-gray-500 overflow-y-scroll">
       {categories.map((category, index) => {
         const { name, icon } = category;
         return (
@@ -13,7 +13,7 @@ const SideBar = ({ currentCategory, setCurrentCategory }) => {
             className="categoryBtn"
           >
             <span
-              className={`mt-2 hover:text-black ${
+              className={` ${
                 name === currentCategory
                   ? "text-black"
                   : "text-[rgb(45, 70, 92)]"
@@ -21,7 +21,7 @@ const SideBar = ({ currentCategory, setCurrentCategory }) => {
             >
               {icon}
             </span>
-            <span className="hover:text-black">{name}</span>
+            <span>{name}</span>
           </button>
         );
       })}
