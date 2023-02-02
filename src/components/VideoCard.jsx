@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { CheckCircle } from "@mui/icons-material";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 
 // import default value if there is no value in response
 import {
@@ -15,27 +14,25 @@ const VideoCard = ({ video }) => {
   const { id, snippet } = video;
   const { videoId } = id;
   return (
-    <Card sx={{ width: { xs: "90%", sm: "260px", md: "280" } }}>
+    <div className="w-[90%] sm:w-[260px] md:w-[280px]">
       {/* video image */}
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-        <CardMedia
-          image={snippet?.thumbnails?.high?.url}
+        <img
+          src={snippet?.thumbnails?.high?.url}
           alt={snippet?.title}
-          sx={{ height: 170, width: "100%" }}
+          className="h-[170px] w-full"
         />
       </Link>
-      {/* video image */}
 
       {/* video description */}
-      <CardContent sx={{ height: 90, px: "10px" }}>
+      <div className="h-[90px] px-2">
         {/* video title link */}
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-          <Typography variant="subtitle1" fontWeight="Bold">
+          <p className="font-bold text-xl">
             {snippet?.title.slice(0, 40) || demoVideoTitle.slice(0, 40)}
-          </Typography>
+          </p>
         </Link>
-        {/* video title link */}
-        {/* video channel name */}
+
         <Link
           to={
             snippet?.channelId
@@ -43,15 +40,14 @@ const VideoCard = ({ video }) => {
               : demoChannelUrl
           }
         >
-          <Typography variant="subtitle3" fontWeight="Bold" color="grey">
+          <p className="font-bold text-lg text-gray-500">
             Channel: {snippet?.channelTitle || demoChannelTitle}
-            <CheckCircle sx={{ fontSize: "12px", ml: "5px" }} />
-          </Typography>
+            <BsFillPatchCheckFill className="text-sm pl-1" />
+          </p>
         </Link>
         {/* video channel name */}
-      </CardContent>
-      {/* video description */}
-    </Card>
+      </div>
+    </div>
   );
 };
 
