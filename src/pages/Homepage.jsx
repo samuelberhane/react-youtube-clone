@@ -24,12 +24,12 @@ const Homepage = () => {
       </div>
 
       {/* videos content */}
-      {/* <div className="py-2 px-5 overflow-y-auto flex-2 h-[92vh]">
-        <p className="font-bold mb-2 ">
-          {currentCategory} <span className="text-[#a342a3]">Videos</span>
+      <div className="py-2 px-5 mt-[125px]">
+        <p className="font-bold mb-2 text-2xl">
+          {currentCategory} <span className="text-[#e13e51]">Videos</span>
         </p>
         <Videos videos={videos} />
-      </div> */}
+      </div>
     </main>
   );
 };
