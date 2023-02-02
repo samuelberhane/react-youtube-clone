@@ -9,9 +9,7 @@ const Videos = ({ videos, direction }) => {
       </h1>
     );
   return (
-    <div
-      className={`flex w-full items-center justify-center gap-7 flex-wrap  px-2`}
-    >
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 md:gap-2">
       {/* map all videos data */}
       {videos.map((item, index) => {
         return <VideoCard video={item} key={index} />;

@@ -14,18 +14,16 @@ const Homepage = () => {
   }, [currentCategory]);
 
   return (
-    <main className="flex flex-col md:flex-row">
+    <main>
       {/* sidebar */}
-      <div className="border-r-2 border-[rgba(0,0,0,0.4)] h-auto md:h-[92vh] md:px-2">
-        <SideBar
-          currentCategory={currentCategory}
-          setCurrentCategory={setCurrentCategory}
-        />
-      </div>
+      <SideBar
+        currentCategory={currentCategory}
+        setCurrentCategory={setCurrentCategory}
+      />
 
       {/* videos content */}
-      <div className="py-2 px-5 mt-[125px]">
-        <p className="font-bold mb-2 text-2xl">
+      <div className="py-3 px-2 mt-[125px] md:mt-[70px] md:ml-[200px]">
+        <p className="font-bold mb-4 text-2xl">
           {currentCategory} <span className="text-[#e13e51]">Videos</span>
         </p>
         <Videos videos={videos} />
