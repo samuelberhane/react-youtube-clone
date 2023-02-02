@@ -10,9 +10,7 @@ const SideBar = ({ currentCategory, setCurrentCategory }) => {
           <button
             onClick={() => setCurrentCategory(name)}
             key={index}
-            className={`category-btn ${
-              name === backgroundColor && "bg-[rgb(245, 70, 172)]"
-            }`}
+            className={`category-btn `}
           >
             <span
               className={`mt-2 ${
