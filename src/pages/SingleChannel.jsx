@@ -23,9 +23,9 @@ const SingleChannel = () => {
   }, [id]);
 
   return (
-    <section>
+    <section className="mt-[70px]">
       {/* background div */}
-      <div className="-z-10 w-full h-[160px] bg-gradient-to-tl from-green-300 via-red-400 to-yellow-300 "></div>
+      <div className="-z-10 w-full h-[200px] bg-gradient-to-tl from-green-300 via-red-400 to-yellow-300 "></div>
 
       {/* channel card */}
       {channelDetails.map((channel, index) => {
@@ -33,7 +33,7 @@ const SingleChannel = () => {
       })}
 
       {/* channel videos */}
-      <div className="w-full mt-[240px] flex items-center justify-center gap-[22px] flex-wrap px-[10px]">
+      <div className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 md:gap-2 grid mt-[150px]">
         {channelVideos.map((video, index) => {
           return <VideoCard video={video} key={index} />;
         })}

@@ -4,14 +4,14 @@ import { demoThumbnailUrl, demoChannelTitle } from "../utils/variables";
 const ChannelCard = ({ channel }) => {
   const { snippet, statistics } = channel;
   return (
-    <div className="absolute top-[120px] left-[50%] translate-x-[-50%] flex flex-col items-center justify-center -z-10">
-      <div className="text-center w-[200px] sm:w-[240px] md:w-[280px] flex flex-col items-center justify-center">
+    <div className="absolute top-[150px] left-[50%] translate-x-[-50%] flex flex-col rounded-2xl items-center justify-center z-50 shadow-md bg-white">
+      <div className="text-center w-[250px]  md:w-[280px] flex flex-col items-center justify-center rounded-2xl">
         <img
           src={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
           alt="videoImg"
-          className="w-full h-[120px]"
+          className="w-full h-[120px] rounded-2xl"
         />
-        <div className="h-[90px] px-2">
+        <div className="px-2 pb-3">
           <h1 className="text-xl font-bold">
             {snippet?.title.slice(0, 25) || demoChannelTitle.slice(0, 25)}
           </h1>
