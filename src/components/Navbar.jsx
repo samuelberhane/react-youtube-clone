@@ -36,7 +36,6 @@ const Navbar = () => {
     });
   }, [user]);
 
-  console.log(user);
   return (
     <div className=" fixed top-0 left-0 w-full h-[70px] shadow-md z-[100] bg-white">
       <div className="flex items-center px-1 py-2 sm:px-8 justify-between h-full">
