@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { fetchSingleVideo } from "../utils/singleVideoData";
 import { useParams, Link } from "react-router-dom";
-import { Navbar, Videos } from "../components";
+import { Navbar, Videos, VideoComment } from "../components";
 import { fetchRelatedData } from "../utils/relatedVideos";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import { demoChannelTitle, demoChannelUrl } from "../utils/variables";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/config";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { auth, db } from "../firebase/config";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const SingleVideo = () => {
   const { id } = useParams();
@@ -16,11 +23,12 @@ const SingleVideo = () => {
   const [user, setUser] = useState(null);
   const [videos, setVideos] = useState([]);
   const [text, setText] = useState("");
+  const [comments, setComments] = useState(null);
 
   // fetch single video data
   useEffect(() => {
     fetchSingleVideo(id).then((response) => {
-      setVideoDetails(response.items[0]);
+      setVideoDetails(response?.items[0]);
     });
   }, [id]);
 
@@ -36,17 +44,38 @@ const SingleVideo = () => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         setUser(user);
+      } else {
+        setUser(null);
       }
     });
-  }, []);
+  }, [user]);
 
   // handle comment submit
-  const handleComment = (e) => {
+  const handleComment = async (e) => {
     e.preventDefault();
+    await addDoc(collection(db, "video", id, "comments"), {
+      text,
+      timestamp: serverTimestamp(),
+      userImage: user?.photoURL,
+      userName: user?.displayName,
+      userEmail: user?.email,
+      videoId: id,
+    });
     setText("");
   };
 
-  // return loading while fetch data
+  // Get video comments
+  useEffect(() => {
+    onSnapshot(
+      query(
+        collection(db, "video", id, "comments"),
+        orderBy("timestamp", "desc")
+      ),
+      (snapshot) => setComments(snapshot.docs)
+    );
+  }, [id]);
+
+  // return while loading
   if (!videoDetails?.snippet) return;
 
   const {
@@ -99,7 +128,11 @@ const SingleVideo = () => {
 
             {/* Video comment */}
             <div className="mb-8">
-              <h1 className="font-bold text-xl mb-3">12 Comments</h1>
+              <h1 className="font-bold text-xl mb-3">
+                {comments?.length < 2
+                  ? comments?.length + " Comment"
+                  : comments?.length + " Comments"}
+              </h1>
               {user ? (
                 <div>
                   <div className="flex gap-2">
@@ -129,96 +162,17 @@ const SingleVideo = () => {
                   </div>
                 </div>
               ) : (
-                <p>Sign in to comment.</p>
+                <p className="font-bold text-sm">Sign in to comment.</p>
               )}
               <div className="max-w-[600px] mt-4">
-                <div className="flex gap-4 mb-3">
-                  <img
-                    src={user?.photoURL}
-                    alt="userProfile"
-                    className="w-9 h-9 rounded-full"
+                {comments?.map((comment, index) => (
+                  <VideoComment
+                    key={index}
+                    comment={comment}
+                    commentId={comment.id}
+                    videoId={id}
                   />
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <p className="font-bold">Samuel Brhane</p>
-                      <p className="text-[13px] font-light mt-[0.1rem] text-gray-500">
-                        12 days ago
-                      </p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quo, rerum.
-                    </p>
-                    <div className="flex items-center gap-4 mt-1">
-                      <div className="flex items-center gap-1">
-                        <AiOutlineLike className="text-lg" />{" "}
-                        <p className="text-sm">2</p>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <AiOutlineDislike className="text-lg" />{" "}
-                        <p className="text-sm">2</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-4 mb-3">
-                  <img
-                    src={user?.photoURL}
-                    alt="userProfile"
-                    className="w-9 h-9 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <p className="font-bold">Samuel Brhane</p>
-                      <p className="text-[13px] font-light mt-[0.1rem] text-gray-500">
-                        12 days ago
-                      </p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quo, rerum.
-                    </p>
-                    <div className="flex items-center gap-4 mt-1">
-                      <div className="flex items-center gap-1">
-                        <AiOutlineLike className="text-lg" />{" "}
-                        <p className="text-sm">2</p>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <AiOutlineDislike className="text-lg" />{" "}
-                        <p className="text-sm">2</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-4 mb-3">
-                  <img
-                    src={user?.photoURL}
-                    alt="userProfile"
-                    className="w-9 h-9 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-1">
-                      <p className="font-bold">Samuel Brhane</p>
-                      <p className="text-[13px] font-light mt-[0.1rem] text-gray-500">
-                        12 days ago
-                      </p>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quo, rerum.
-                    </p>
-                    <div className="flex items-center gap-4 mt-1">
-                      <div className="flex items-center gap-1">
-                        <AiOutlineLike className="text-lg" />{" "}
-                        <p className="text-sm">2</p>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <AiOutlineDislike className="text-lg" />{" "}
-                        <p className="text-sm">2</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
