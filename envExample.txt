@@ -1,0 +1,2 @@
+REACT_APP_RAPID_API_KEY=rapid youtube api key
+REACT_APP_FIREBASE_API_KEY=firebase api key
